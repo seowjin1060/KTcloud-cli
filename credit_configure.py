@@ -3,6 +3,7 @@
 class configure:
     def __init__(self,input_command):
         self.command  = input_command
+        self.commands = ["init","list"]
         self.ZONE= {"KOR-Central A":"1", "KOR-Central B":'2', "KOR-HA":'3', "KOR-Seoul M2":"4", "JPN":"5", "US-West":"6",}
         self.RESPONSE_TYPE=['json','xml']
     def configure_init(self):
@@ -43,8 +44,12 @@ class configure:
             self.configure_init()
         elif command == "list":
             self.configure_list()
+        elif command == "help":
+            print("==========Supported configure commands==========")
+            for i in self.commands:
+                print("ucloudcli configure ",i)
         else:
-            print("no command matched")
+            print("no command matched for "+"'ucloudcli configure"+command+"'"+ "\n" +"type 'ucloudcli configure help' to to view supported configure command'")
             exit(-1)
 
     ##def command_process_server(command):
