@@ -2,6 +2,7 @@ import sys
 import make_signature_2 
 import urllib.parse
 import credit_configure
+import server_tools
 UCLOUD_API_URLS={
     'server' : 'https://api.ucloudbiz.olleh.com/server/v1/client/api',
     'loadbalancer'     : 'https://api.ucloudbiz.olleh.com/loadbalancer/v1/client/api',
@@ -17,12 +18,11 @@ UCLOUD_API_URLS={
 
 #Command_List = ["configure","ListAvailableProductTypes","delpoyVirtualMachine","startVirtualMachine","listVirtualMachines","listVirtualMachineForCharge"]
 Ctype_List = ["configure","server"]
-
 ctype = ""
 command = ""
 def main():
     cnt = 0
-   
+    parameters = []
     if len(sys.argv) < 3:
 ##        if(sys.argv[1] == Command_List[0]):
 ##            configure()
@@ -41,22 +41,23 @@ def main():
                 cnt+=1
                 break
         if(cnt == 0):
-            print("unable to process command type 'ucloudcli help' to verify commands  ")
+            print("unable to process type: ",ctype,"\n type 'ucloudcli help' to view supported type")
             exit(-1)
-        ctype_process(ctype,command)      
+        for i in range(2,len(sys.argv)):
+            parameters.append(sys.argv[i])
+            
+        ctype_process(ctype,command,parameters)      
 
 
     #signature = sig.sign_request_url(ZONE)
 
-def ctype_process(ctype,command):
-    print(command)
+def ctype_process(ctype,command,parameters):
     if ctype == "configure":
         c = credit_configure.configure(command)
         c.command_process_configure()
-    #elif ctype == "server":
-        
-    return
-
+    elif ctype == "server":
+        s = server_tools.server(command)
+        s.execute()
 
 
 #def ListAvailableProductTypes():

@@ -31,11 +31,14 @@ class configure:
         return
 
     def configure_list(self):
-        credit = open("credit.txt" , "r")
-        print("API_KEY : ", credit.readilne())
-        print("Secret Key : ", credit.readilne())
-        print("Zone : ", credit.readline())
-        print("response Type: ", credit.readline())
+        credit_file = open("credit.txt" , "r")
+        credit =[]
+        for line in credit_file:
+            credit.append(line)
+        print("API_KEY : ", credit[0])
+        print("Secret Key : ", credit[1])
+        print("Zone : ", credit[2])
+        print("response Type: ", credit[3])
         return
     
     def command_process_configure(self):
