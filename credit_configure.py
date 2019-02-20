@@ -1,14 +1,17 @@
+
+
 class configure:
-    def __init__(self,command):
-        command_process_configure(command)
-        
-    def configure_init():
+    def __init__(self,input_command):
+        self.command  = input_command
+        self.ZONE= {"KOR-Central A":"1", "KOR-Central B":'2', "KOR-HA":'3', "KOR-Seoul M2":"4", "JPN":"5", "US-West":"6",}
+        self.RESPONSE_TYPE=['json','xml']
+    def configure_init(self):
         m2_zone = False
         apikey_in = input("[api_key] :")
         secret_in = input("[secret key} :")
         zone_in = input("[data center] or type 'help' to check all aviliable zones :")
-        while(zone_in == 'help' or zone_in not in ZONE):
-            for name in ZONE:
+        while(zone_in == 'help' or zone_in not in self.ZONE):
+            for name in self.ZONE:
                 print(name)
             zone_in = input("[data center] or type 'help' to check supported zones :")
     #    for i in ZONE:
@@ -26,21 +29,23 @@ class configure:
         t.close()
         return
 
-    def configure_list():
+    def configure_list(self):
         credit = open("credit.txt" , "r")
         print("API_KEY : ", credit.readilne())
         print("Secret Key : ", credit.readilne())
         print("Zone : ", credit.readline())
         print("response Type: ", credit.readline())
         return
-    def command_process_configure(command):
+    
+    def command_process_configure(self):
+        command = self.command
         if command == "init":
-            configure_init()
+            self.configure_init()
         elif command == "list":
-            configure_list()
+            self.configure_list()
         else:
             print("no command matched")
-        exit(-1)
+            exit(-1)
 
     ##def command_process_server(command):
     ##    if ctype == "List"
