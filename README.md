@@ -3,7 +3,10 @@
 
 개발 1단계  python ucloudbiz 명령어 파라미터로 실행
 -2/20 4시 35분 개발완료
-구현 기능: -configure
+
+구현 기능:
+
+-configure
 -> init:  APIkey, SecretKey, Zone, response_type을 초기화
 -> list:  등록된 사용자 크레딧을 조회
 -> help: 명령어 가이드
