@@ -5,6 +5,7 @@ import sys
 import urllib.parse
 import credit_configure
 import server_tools
+import art
 UCLOUD_API_URLS={
     'server' : 'https://api.ucloudbiz.olleh.com/server/v1/client/api',
     'loadbalancer'     : 'https://api.ucloudbiz.olleh.com/loadbalancer/v1/client/api',
@@ -39,16 +40,21 @@ def main():
 ##            ListAvailableProductTypes()
 ##        else:
         if(len(sys.argv) == 1):
-            print ("usage: ucloudbiz [type] [command] [parameters] \n or type ucloudbiz help")
-            print("aaaaaaarttttt")
+            Art  = art.text2art("KT",font="black")
+            print(Art)
+            Art  = art.text2art("UCLOUD",font="black")
+            print(Art)
+            print(" ")
+
+            print ("usage: ucloud [type] [command] [parameters] \nor type 'ucloudbiz help'")
         elif(len(sys.argv) == 2):
             if(sys.argv[1] == "help"):
                 ctype_process("help","",parameters)
             else:
-                print ("usage: ucloudbiz [type] [command] [parameters] \n or type ucloudbiz help")
+                print ("usage: ucloud [type] [command] [parameters] \nor type 'ucloudbiz help'")
                 exit(-1)
         else:
-            print ("usage: ucloudbiz [type] [command] [parameters] \n or type ucloudbiz help")
+            print ("usage: ucloud [type] [command] [parameters] \nor type 'ucloudbiz help'")
             exit(-1)
     else:
         ctype = sys.argv[1]
@@ -61,7 +67,7 @@ def main():
                 cnt+=1
                 break
         if(cnt == 0):
-            print("unable to process type: ",ctype,"\n type 'ucloudcli help' to view supported type")
+            print("unable to process type: ",ctype,"\n type 'ucloud help' to view supported type")
             exit(-1)
         for i in range(3,len(sys.argv)):
             parameters.append(sys.argv[i])

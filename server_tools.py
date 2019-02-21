@@ -51,7 +51,27 @@ class server:
         if self.command == "help":
             print("==========Supported server commands==========")
             for i in self.command_list:
-                print("ucloudcli server ",i," ",end='')
+                if(i == "createVolume"):
+                    print("========== Volume commands==========")
+                elif(i == "associateIpAddress"):
+                    print("========== IP address commands=======")
+                elif(i == "createPortForwardingRule"):
+                    print("==========  port forward commands=======")
+                elif(i =="createFirewallRule"):
+                    print("==========  firewall commands=======")
+                elif(i == "createSnapshot"):
+                    print("==========  snapshot commands=======")
+                elif( i == "createTemplate"):
+                    print("==========  Template commands=======")
+                elif( i == "listNetworks"):
+                    print("==========  Networks commands=======")
+                elif( i == "createSSHKeyPair"):
+                    print("==========  SSHKeyPair commands=======")
+                elif( i == "enableStaticNat"):
+                    print("==========  StaticNat commands=======")
+                elif( i == "createTags"):
+                    print("==========  Tag commands=======")
+                print("ucloud server ",i," ",end='')
                 for i in self.command_list[i]:
                     print('[',i,']',' ',end='')
                 print("")
@@ -84,18 +104,31 @@ class server:
             for i in p_dict:
                 query = query + "&"+i+"="+p_dict[i]
             query +="&response="+self.response+"&apiKey="+self.apikey+"&signature="+sig
-            print("res_url:",query)
+ #           print("res_url:",query)
             response = requests.get(query)
             res = response.json()
-            if response.status_code != "200":
-                print(response.text)
+            if response.status_code != 200:
+                 print(response.status_code)
+                 print(response.text)
+                 print("what")
             else:
                 key = ""
                 for line in res[self.command.lower()+"response"]:
-                    key = line
-                    break
-                print(str(key))
+                    if(line == "count"):
+                        continue
+                    else :
+                        key = line
+                    print(key)
+                    #break
                 for line in res[self.command.lower()+"response"][key]:
-                    print(line)
-
+                    #a = line["producttypes"]
+                    print("====================================================")
+                    for l in line:
+                        print(l,":",line[l])
+                    print("=====================================================")
+                        #print(l)
+                        #print("")
+                    #break
+                   # for a in res[self.command.lower()+"response"][key][line]:
+                        
                 
