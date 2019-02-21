@@ -14,10 +14,10 @@
 -> ucloudcli configure help: 명령어 가이드
 
 ==========Supported server commands==========
-
 ucloudcli server  help  
 ucloudcli server  listAvailableProductTypes  
 ucloudcli server  deployVirtualMachine  [ serviceofferingid ]  [ templateid ]  [ diskofferingid ]  [ zoneid ]  
+ucloudcli server  destroyVirtualMachine  [ id ]  
 ucloudcli server  startVirtualMachine  [ id ]  
 ucloudcli server  listVirtualMachines  [ state ]  
 ucloudcli server  listVirtualMachineForCharge  
@@ -28,19 +28,59 @@ ucloudcli server  changeServiceForVirtualMachineVerify  [ id ]  [ serviceofferin
 ucloudcli server  restoreVirtualMachine  [ virtualmachineid ]  
 ucloudcli server  updateVirtualMachine  [ id ]  [ displayname ]  [ haenable ]  
 ucloudcli server  updateVirtualMachineForCharge  [ id,usageplantype ]  
-ucloudcli server  createVolume  [ name ]  [ diskofferingid ]  [ zoneid ]  [ usageplantype ]  [ account ]  [ domainid ]  
-[ size ]  [ snapshotid ]  [ virtualmachineid ]  [ productcode ]  [ iops ]  
+ucloudcli server  createVolume  [ name ]  [ diskofferingid ]  [ zoneid ]  [ usageplantype ]  [ account ] [ domainid ][ size ]  [ snapshotid ]  [ virtualmachineid ]  [ productcode ]  [ iops ]  
 ucloudcli server  attachVolume  [ id ]  [ virtualmachineid ]  
 ucloudcli server  detatchVolume  [ deviceid ]  [ id ]  [ virtualmachineid ]  
 ucloudcli server  deleteVolume  [ id ]  
-ucloudcli server  listVolumes  [ account ]  [ domainid ]  [ hostid ]  [ id ]  [ isrecursive ]  [ keyword ]  [ name ]  [ page ]  [ pagesize ]  [ podid ]  [ type ]  [ virtualmachineid ]  [ zoneid ]  [ install ]  
+ucloudcli server  listVolumes  
 ucloudcli server  resizeVolume  [ id ]  [ vmid ]  [ size ]  [ isLinux ]  
 ucloudcli server  updateUsagePlanTypeForServer  [ type ]  [ usagePlanType ]  [ id ]  
-ucloudcli server  destroyVirtualMachine  [ id ]  
 ucloudcli server  associateIpAddress  [ zoneid ]  [ usageplantype ]  [ account ]  [ domainid ]  [ networkid ]  
-ucloudcli server  listPublicIpAddresses  [ id ]  
 ucloudcli server  disassociateIpAddress  [ id ]  
-
+ucloudcli server  listPublicIpAddresses  [ account ]  
+ucloudcli server  updateIpAddress  [ desc ]  [ id ]  
+ucloudcli server  upateUsagePlanTypeForServer  [ type ]  [ usagePlanType ]  [ id ]  
+ucloudcli server  createPortForwardingRule  [ ipaddressid ]  [ privateport ]  [ protocol ]  [ publicport ][ virtualmachineid ]  [ cidrlist ]  [ openfirewall ]  [ privateendport ]  [ publicendport ]  
+ucloudcli server  deletePortForwardingRule  [ id ]  
+ucloudcli server  listPortForwardingRules  [ account ]  [ domainid ]  [ id ]  [ ipaddressid ]  [ keyword ]  [ page ]  [ pagesize ]  [ isrecursive ]  [ listall ]  
+ucloudcli server  createFirewallRule  [ ipaddressid ]  [ protocol ]  [ cidrlist ]  [ startport ]  [ endport ]  [ icmpcode ]  
+[ icmptype ]  [ type ]  
+ucloudcli server  deleteFirewallRule  [ id ]  
+ucloudcli server  listFirewallRules  [ account ]  [ domainid ]  [ id ]  [ ipaddressid ]  [ keyword ]  [ page ]  [ pagesize ]  [ srecursive ]  
+ucloudcli server  listAccounts  [ accounttype ]  [ domainid ]  [ id ]  [ iscleanuprequired ]  [ isrecursive ]  [ keyword ]  
+[ name ]  [ page ]  [ pagesize ]  [ state ]  [ listall ]  
+ucloudcli server  queryAsyncjobResult  [ jobid ]  
+ucloudcli server  listEvents  [ account ]  [ domainid ]  [ duration ]  [ startdate ]  [ enddate ]  [ entrytime ]  [ id ]  
+[ keyword ]  [ page ]  [ pagesize ]  [ type ]  [ isrecursive ]  [ listall ]  
+ucloudcli server  createSnapshot  [ volumeid ]  [ account ]  [ domainid ]  [ policyid ]  
+ucloudcli server  deleteSnapshot  [ id ]  
+ucloudcli server  listSnapshots  [ account ]  [ domainid ]  [ id ]  [ intervaltype ]  [ isrecursive ]  [ keyword ]  [ name ]  [ page ]  [ pagesize ]  [ snapshottype ]  [ volumeid ]  [ listall ]  
+ucloudcli server  listSnapshotSize  [ id ]  
+ucloudcli server  createTemplate  [ displaytext ]  [ name ]  [ ostypeid ]  
+ucloudcli server  deleteTemplate  [ id ]  [ zoneid ]  
+ucloudcli server  updateTemplate  [ id ]  [ bootable ]  [ displaytext ]  [ format ]  [ name ]  [ ostypeid ]  [ zoneid ]  
+[ isgroup ]  [ passwordenable ]  [ sortkey ]  
+ucloudcli server  listTemplates  [ templatefilter ]  
+ucloudcli server  copyTemplate  [ id ]  [ sourcezoneid ]  [ destzoneid ]  
+ucloudcli server  listNetworks  
+ucloudcli server  listNetworkUsages  [ startdate ]  [ enddate ]  
+ucloudcli server  createNetwork  [ displaytext ]  [ zoneid ]  [ account ]  [ domainid ]  [ ipcount ]  
+ucloudcli server  deleteNetwork  [ id ]  
+ucloudcli server  interAzStatus  [ destnetworkid ]  [ sourcenetworkid ]  
+ucloudcli server  listNetworkFlatRate  
+ucloudcli server  networkFlatRate  [ type ]  
+ucloudcli server  addNicToVirtualMachine  [ networkid ]  [ virtualmachineid ]  [ eid ]  
+ucloudcli server  removeNicFromVirtualMachine  [ nicid ]  [ virtualmachineid ]  
+ucloudcli server  requestForInterAz  [ destnetworkid ]  [ sourcenetworkid ]  [ destzoneid ]  [ sourcezoneid ]  
+ucloudcli server  listZones  
+ucloudcli server  createSSHKeyPair  [ Name ]  
+ucloudcli server  deleteSSHKeyPair  [ Name ]  
+ucloudcli server  listSSHKeyPairs  [ Name ]  
+ucloudcli server  enableStaticNat  [ ipaddressid ]  [ virtualmachineid ]  
+ucloudcli server  disableStaticNat  [ ipaddressid ]  
+ucloudcli server  createTags  [ resourceids ]  [ resoucretype ]  [ Tags ]  
+ucloudcli server  deleteTags  [ resourceids ]  [ resourcetype ]  
+ucloudcli server  listTags 
 ->listVirtualMachineForCharge (url 체계가 달라서 수행 안됨.)
 
 
