@@ -12,13 +12,27 @@ class server:
         for line in file:
             line = line.replace("\n","")
             self.credit.append(line)
-        self.command_list = {"help":[],"listAvailableProductTypes":[],"deployVirtualMachine":["serviceofferingid","templateid","diskofferingid","zoneid"],"startVirtualMachine":["id"]
+        self.command_list = {"help":[],"listAvailableProductTypes":[],"deployVirtualMachine":["serviceofferingid","templateid","diskofferingid","zoneid"],"destroyVirtualMachine":["id"],"startVirtualMachine":["id"]
                             ,"listVirtualMachines":["state"],"listVirtualMachineForCharge":[],"stopVirtualMachine":["id"],"changeServiceForVirtualMachine":["id","serviceofferingid"],
                              "checkVirtualMachineName":["display_name"],"changeServiceForVirtualMachineVerify":["id","serviceofferingid"],"restoreVirtualMachine":["virtualmachineid"],
-                             "updateVirtualMachine":["id","displayname","haenable"],"updateVirtualMachineForCharge":["id,usageplantype"],"createVolume":["name","diskofferingid","zoneid","usageplantype","account","domainid","size","snapshotid","virtualmachineid","productcode","iops"],
-                             "attachVolume":["id","virtualmachineid"],"detatchVolume":["deviceid","id","virtualmachineid"],"deleteVolume":["id"],"listVolumes":["account","domainid","hostid","id","isrecursive","keyword","name","page","pagesize","podid","type","virtualmachineid","zoneid","install"],
-                             "resizeVolume":["id","vmid","size","isLinux"],
-                             "updateUsagePlanTypeForServer":["type","usagePlanType","id"],"destroyVirtualMachine":["id"],"associateIpAddress":["zoneid","usageplantype","account","domainid","networkid"],"listPublicIpAddresses":["id"], "disassociateIpAddress":["id"]}
+                             "updateVirtualMachine":["id","displayname","haenable"],"updateVirtualMachineForCharge":["id,usageplantype"],
+                             "createVolume":["name","diskofferingid","zoneid","usageplantype","account","domainid","size","snapshotid","virtualmachineid","productcode","iops"],
+                             "attachVolume":["id","virtualmachineid"],"detatchVolume":["deviceid","id","virtualmachineid"],"deleteVolume":["id"],"listVolumes":[],
+                             "resizeVolume":["id","vmid","size","isLinux"],"updateUsagePlanTypeForServer":["type","usagePlanType","id"],"associateIpAddress":["zoneid","usageplantype","account","domainid","networkid"], "disassociateIpAddress":["id"],"listPublicIpAddresses":["account"],
+                             "updateIpAddress":["desc","id"],"upateUsagePlanTypeForServer":["type","usagePlanType","id"],
+                             "createPortForwardingRule":["ipaddressid","privateport","protocol","publicport","virtualmachineid","cidrlist","openfirewall","privateendport","publicendport"],
+                             "deletePortForwardingRule":["id"],"listPortForwardingRules":["account","domainid","id","ipaddressid","keyword","page","pagesize","isrecursive","listall"],
+                             "createFirewallRule":["ipaddressid","protocol","cidrlist","startport","endport","icmpcode","icmptype","type"], "deleteFirewallRule":["id"], "listFirewallRules":["account","domainid","id","ipaddressid","keyword","page","pagesize","srecursive"],"listAccounts":["accounttype","domainid","id","iscleanuprequired","isrecursive","keyword","name","page","pagesize","state","listall"],
+                             "queryAsyncjobResult":["jobid"],"listEvents":["account","domainid","duration","startdate","enddate","entrytime","id","keyword","page","pagesize","type","isrecursive","listall"],
+                             "createSnapshot": ["volumeid","account","domainid","policyid"],"deleteSnapshot":["id"],"listSnapshots":["account","domainid","id","intervaltype","isrecursive","keyword","name","page","pagesize","snapshottype","volumeid","listall"],"listSnapshotSize":["id"],"createTemplate":["displaytext","name","ostypeid"],
+                             "deleteTemplate":["id","zoneid"],"updateTemplate":["id","bootable","displaytext","format","name","ostypeid","zoneid","isgroup","passwordenable","sortkey"],"listTemplates":["templatefilter"],"copyTemplate":["id","sourcezoneid","destzoneid"],
+                             "listNetworks":[], "listNetworkUsages":["startdate","enddate"],"createNetwork":["displaytext","zoneid","account","domainid","ipcount"],"deleteNetwork":["id"],
+                             "interAzStatus":["destnetworkid","sourcenetworkid"],"listNetworkFlatRate":[],"networkFlatRate":["type"],"addNicToVirtualMachine":["networkid","virtualmachineid","eid"],"removeNicFromVirtualMachine":["nicid","virtualmachineid"],"requestForInterAz":["destnetworkid","sourcenetworkid","destzoneid","sourcezoneid"],
+                             "listZones":[],
+                             "createSSHKeyPair":["Name"],"deleteSSHKeyPair":["Name"],"listSSHKeyPairs":["Name"],
+                             "enableStaticNat":["ipaddressid","virtualmachineid"],"disableStaticNat":["ipaddressid"],
+                             "createTags":["resourceids","resoucretype","Tags"], "deleteTags":["resourceids","resourcetype"],"listTags":[]
+                             }
         self.command = input_command
         #print(self.credit)
         self.apikey = self.credit[0]
@@ -41,6 +55,7 @@ class server:
                 for i in self.command_list[i]:
                     print('[',i,']',' ',end='')
                 print("")
+            print("=============================================")
         else:               
             for i in self.command_list:
                 if(i == self.command):

@@ -59,6 +59,7 @@ class configure:
             print("==========Supported configure commands==========")
             for i in self.commands:
                 print("ucloudcli configure ",i)
+            print("================================================")
         else:
             print("no command matched for "+"'ucloudcli configure"+command+"'"+ "\n" +"type 'ucloudcli configure help' to to view supported configure command'")
             exit(-1)
