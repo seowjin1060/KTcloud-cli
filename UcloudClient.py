@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
+
 import sys
-import make_signature_2 
+#import make_signature_2 
 import urllib.parse
 import credit_configure
 import server_tools
@@ -17,24 +19,42 @@ UCLOUD_API_URLS={
 }
 
 #Command_List = ["configure","ListAvailableProductTypes","delpoyVirtualMachine","startVirtualMachine","listVirtualMachines","listVirtualMachineForCharge"]
-Ctype_List = ["configure","server"]
+Ctype_List = ["help","configure","server"]
 ctype = ""
 command = ""
 def main():
     cnt = 0
+    try:
+            file = open("credit.txt","r")
+    except:
+            print("no credit file detected \nplease type 'ucloud configure init' to create credit files")
+            exit(-1)
     parameters = []
-    if len(sys.argv) < 3:
+   # print(sys.argv[1])
+    if len(sys.argv) < 3 :
 ##        if(sys.argv[1] == Command_List[0]):
 ##            configure()
 ##            ctype = sys.argv[1]
 ##        elif(sys.argv[1] == Command_List[1]):
 ##            ListAvailableProductTypes()
 ##        else:
-        print ("usage: ucloudbiz [type] [command] [parameters] \n or type ucloudbiz help")
-        exit(-1)
+        if(len(sys.argv) == 1):
+            print ("usage: ucloudbiz [type] [command] [parameters] \n or type ucloudbiz help")
+            print("aaaaaaarttttt")
+        elif(len(sys.argv) == 2):
+            if(sys.argv[1] == "help"):
+                ctype_process("help","",parameters)
+            else:
+                print ("usage: ucloudbiz [type] [command] [parameters] \n or type ucloudbiz help")
+                exit(-1)
+        else:
+            print ("usage: ucloudbiz [type] [command] [parameters] \n or type ucloudbiz help")
+            exit(-1)
     else:
         ctype = sys.argv[1]
-        command = sys.argv[2]
+        command = ""
+        if(ctype != "help"):
+            command = sys.argv[2]
         for c in Ctype_List:
             if (c == sys.argv[1]):
                 ctype = c
@@ -43,7 +63,7 @@ def main():
         if(cnt == 0):
             print("unable to process type: ",ctype,"\n type 'ucloudcli help' to view supported type")
             exit(-1)
-        for i in range(2,len(sys.argv)):
+        for i in range(3,len(sys.argv)):
             parameters.append(sys.argv[i])
             
         ctype_process(ctype,command,parameters)      
@@ -52,16 +72,17 @@ def main():
     #signature = sig.sign_request_url(ZONE)
 
 def ctype_process(ctype,command,parameters):
+    
     if ctype == "configure":
         c = credit_configure.configure(command)
         c.command_process_configure()
     elif ctype == "server":
-        s = server_tools.server(command)
-        s.execute()
-
-
-#def ListAvailableProductTypes():
-    
+        s = server_tools.server(command,parameters)
+        s.execute()        
+    elif ctype =="help":
+        print("============[type] list============ ")
+        for i in Ctype_List:
+            print(i)
+        
+        
 main()
-##def ListAvailableProductTypes():
-##    return
