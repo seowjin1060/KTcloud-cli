@@ -4,12 +4,21 @@ import json
 class server:
     def __init__(self,input_command,parameters):
         self.credit = []
-        file = open("credit.txt","r")
+        try:
+            file = open("credit.txt","r")
+        except:
+            print("no credit file detected \nplease type 'ucloud configure init' to create credit files")
+            exit(-1)
         for line in file:
             line = line.replace("\n","")
             self.credit.append(line)
-        self.command_list = {"help":[],"listAvailableProductTypes":[],"delpoyVirtualMachine":["productcode","zoneid"],"startVirtualMachine":["id"]
-                            ,"listVirtualMachines":["state"],"listVirtualMachineForCharge":[]}
+        self.command_list = {"help":[],"listAvailableProductTypes":[],"deployVirtualMachine":["serviceofferingid","templateid","diskofferingid","zoneid"],"startVirtualMachine":["id"]
+                            ,"listVirtualMachines":["state"],"listVirtualMachineForCharge":[],"stopVirtualMachine":["id"],"changeServiceForVirtualMachine":["id","serviceofferingid"],
+                             "checkVirtualMachineName":["display_name"],"changeServiceForVirtualMachineVerify":["id","serviceofferingid"],"restoreVirtualMachine":["virtualmachineid"],
+                             "updateVirtualMachine":["id","displayname","haenable"],"updateVirtualMachineForCharge":["id,usageplantype"],"createVolume":["name","diskofferingid","zoneid","usageplantype","account","domainid","size","snapshotid","virtualmachineid","productcode","iops"],
+                             "attachVolume":["id","virtualmachineid"],"detatchVolume":["deviceid","id","virtualmachineid"],"deleteVolume":["id"],"listVolumes":["account","domainid","hostid","id","isrecursive","keyword","name","page","pagesize","podid","type","virtualmachineid","zoneid","install"],
+                             "resizeVolume":["id","vmid","size","isLinux"],
+                             "updateUsagePlanTypeForServer":["type","usagePlanType","id"],"destroyVirtualMachine":["id"],"associateIpAddress":["zoneid","usageplantype","account","domainid","networkid"],"listPublicIpAddresses":["id"], "disassociateIpAddress":["id"]}
         self.command = input_command
         #print(self.credit)
         self.apikey = self.credit[0]
@@ -28,7 +37,10 @@ class server:
         if self.command == "help":
             print("==========Supported server commands==========")
             for i in self.command_list:
-                print("ucloudcli server ",i)
+                print("ucloudcli server ",i," ",end='')
+                for i in self.command_list[i]:
+                    print('[',i,']',' ',end='')
+                print("")
         else:               
             for i in self.command_list:
                 if(i == self.command):
