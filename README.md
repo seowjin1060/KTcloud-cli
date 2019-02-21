@@ -8,11 +8,13 @@
 구현 기능: 
 
 ================Supported configure commands===========
+
 -> ucloudcli configure init:  APIkey, SecretKey, Zone, response_type을 초기화
 -> ucloudcli configure list:  등록된 사용자 크레딧을 조회
 -> ucloudcli configure help: 명령어 가이드
 
 ==========Supported server commands==========
+
 ucloudcli server  help  
 ucloudcli server  listAvailableProductTypes  
 ucloudcli server  deployVirtualMachine  [ serviceofferingid ]  [ templateid ]  [ diskofferingid ]  [ zoneid ]  
