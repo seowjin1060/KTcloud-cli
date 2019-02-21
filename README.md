@@ -5,16 +5,39 @@
 
 개발 1단계  python ucloudbiz 명령어 파라미터로 실행
 -2/20 4시 35분 개발완료
-구현 기능: -configure
--> init:  APIkey, SecretKey, Zone, response_type을 초기화
--> list:  등록된 사용자 크레딧을 조회
--> help: 명령어 가이드
+구현 기능: 
 
--server
-->listAvailableProductTypes
-->delpoyVirtualMachine
-->startVirtualMachine
-->listVirtualMachines
+================Supported configure commands===========
+-> ucloudcli configure init:  APIkey, SecretKey, Zone, response_type을 초기화
+-> ucloudcli configure list:  등록된 사용자 크레딧을 조회
+-> ucloudcli configure help: 명령어 가이드
+
+==========Supported server commands==========
+ucloudcli server  help  
+ucloudcli server  listAvailableProductTypes  
+ucloudcli server  deployVirtualMachine  [ serviceofferingid ]  [ templateid ]  [ diskofferingid ]  [ zoneid ]  
+ucloudcli server  startVirtualMachine  [ id ]  
+ucloudcli server  listVirtualMachines  [ state ]  
+ucloudcli server  listVirtualMachineForCharge  
+ucloudcli server  stopVirtualMachine  [ id ]  
+ucloudcli server  changeServiceForVirtualMachine  [ id ]  [ serviceofferingid ]  
+ucloudcli server  checkVirtualMachineName  [ display_name ]  
+ucloudcli server  changeServiceForVirtualMachineVerify  [ id ]  [ serviceofferingid ]  
+ucloudcli server  restoreVirtualMachine  [ virtualmachineid ]  
+ucloudcli server  updateVirtualMachine  [ id ]  [ displayname ]  [ haenable ]  
+ucloudcli server  updateVirtualMachineForCharge  [ id,usageplantype ]  
+ucloudcli server  createVolume  [ name ]  [ diskofferingid ]  [ zoneid ]  [ usageplantype ]  [ account ]  [ domainid ]  
+[ size ]  [ snapshotid ]  [ virtualmachineid ]  [ productcode ]  [ iops ]  
+ucloudcli server  attachVolume  [ id ]  [ virtualmachineid ]  
+ucloudcli server  detatchVolume  [ deviceid ]  [ id ]  [ virtualmachineid ]  
+ucloudcli server  deleteVolume  [ id ]  
+ucloudcli server  listVolumes  [ account ]  [ domainid ]  [ hostid ]  [ id ]  [ isrecursive ]  [ keyword ]  [ name ]  [ page ]  [ pagesize ]  [ podid ]  [ type ]  [ virtualmachineid ]  [ zoneid ]  [ install ]  
+ucloudcli server  resizeVolume  [ id ]  [ vmid ]  [ size ]  [ isLinux ]  
+ucloudcli server  updateUsagePlanTypeForServer  [ type ]  [ usagePlanType ]  [ id ]  
+ucloudcli server  destroyVirtualMachine  [ id ]  
+ucloudcli server  associateIpAddress  [ zoneid ]  [ usageplantype ]  [ account ]  [ domainid ]  [ networkid ]  
+ucloudcli server  listPublicIpAddresses  [ id ]  
+ucloudcli server  disassociateIpAddress  [ id ]  
 
 ->listVirtualMachineForCharge (url 체계가 달라서 수행 안됨.)
 
