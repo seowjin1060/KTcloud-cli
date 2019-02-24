@@ -104,3 +104,6 @@ ucloudcli server  listTags
 - 셔뱅 추가 (#!/path   python)
 - 확장자 제거 
 - bin에 path 추가   (export)
+
+
+개발 3단계  pip을 통한 설치 후, 2단계의 설정 자동화 (2/24)
