@@ -22,6 +22,7 @@ def make_digest(key,message) :
 ##    signature2 = base64.urlsafe_b64encode(signature1)    
 ##    #print(signature2)
 ##    #return str(signature2, 'UTF-8')
+    #print(message)
     signature = b64encode(hmac.new(
             key,
             msg=message.lower(),
@@ -32,12 +33,13 @@ def make_digest(key,message) :
 def url_encode(input_list):
     urllib.urlencode(input_list)
     
-def sign_request_url(api_key,secret,command,response):
+def sign_request_url(api_key,secret,command,response,parameters):
     args = {}
     args['command']  = command
+    for key in parameters:
+        args[key] = parameters[key]
     args['response'] = response
     args['apiKey']   = api_key
-        
         # For safty reason, force Quote some character.
     for i in args.keys():
         args[i] = args[i].replace("%", "%26")
@@ -48,7 +50,7 @@ def sign_request_url(api_key,secret,command,response):
     
     signature = make_digest(secret,query.lower())
     signature = urllib.parse.quote(signature)
-   # print(query)
+    #print("query:",query)
     #print(signature)
     listAvailableProductTypes(signature,query)
     return signature

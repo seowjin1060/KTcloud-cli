@@ -1,4 +1,4 @@
-
+import os
 
 class configure:
     def __init__(self,input_command):
@@ -45,6 +45,7 @@ class configure:
         t.write(response+"\n")
         t.write(str(m2_zone)+ "\n")
         t.close()
+        os.system("chmod u=rwx,g=rx,o= credit.txt")
         return
 
 
