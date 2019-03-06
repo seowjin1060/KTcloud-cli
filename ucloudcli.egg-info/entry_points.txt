@@ -1,0 +1,6 @@
+[console_scripts]
+
+
+[egg_info.writers]
+
+

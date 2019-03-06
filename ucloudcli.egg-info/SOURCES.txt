@@ -1,0 +1,7 @@
+README.md
+setup.py
+ucloudcli.egg-info/PKG-INFO
+ucloudcli.egg-info/SOURCES.txt
+ucloudcli.egg-info/dependency_links.txt
+ucloudcli.egg-info/entry_points.txt
+ucloudcli.egg-info/top_level.txt
