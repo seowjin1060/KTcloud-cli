@@ -18,22 +18,21 @@ UCLOUD_API_URLS={
     'nas'    : 'https://api.ucloudbiz.olleh.com/nas/v1/client/api',
     'db'     : 'https://api.ucloudbiz.olleh.com/db/v1/client/api',
 }
-    # try:
-    #         file = open("credit.txt","r")
-    # except:
-    #         print("no credit file detected \nplease type 'ucloud configure init' to create credit files")
-    #         exit(-1)
+
 #Command_List = ["configure","ListAvailableProductTypes","delpoyVirtualMachine","startVirtualMachine","listVirtualMachines","listVirtualMachineForCharge"]
 Ctype_List = ["help","configure","server"]
 ctype = ""
 command = ""
 def main():
     cnt = 0
+    try:
+            file = open("credit.txt","r")
+    except:
+            print("no credit file detected \nplease type 'ucloud configure init' to create credit files")
+            exit(-1)
     parameters = []
    # print(sys.argv[1])
-   
     if len(sys.argv) < 3 :
-
 ##        if(sys.argv[1] == Command_List[0]):
 ##            configure()
 ##            ctype = sys.argv[1]
@@ -46,16 +45,16 @@ def main():
             Art  = art.text2art("UCLOUD",font="black")
             print(Art)
             print(" ")
-            print ("usage: ucloud [type] [command] [parameters] \nor type 'ucloud help'")
 
+            print ("usage: ucloud [type] [command] [parameters] \nor type 'ucloudbiz help'")
         elif(len(sys.argv) == 2):
             if(sys.argv[1] == "help"):
                 ctype_process("help","",parameters)
             else:
-                print ("usage: ucloud [type] [command] [parameters] \nor type 'ucloud help'")
+                print ("usage: ucloud [type] [command] [parameters] \nor type 'ucloudbiz help'")
                 exit(-1)
         else:
-            print ("usage: ucloud [type] [command] [parameters] \nor type 'ucloud help'")
+            print ("usage: ucloud [type] [command] [parameters] \nor type 'ucloudbiz help'")
             exit(-1)
     else:
         ctype = sys.argv[1]
