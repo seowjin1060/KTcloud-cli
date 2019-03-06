@@ -1,8 +1,7 @@
+#!/usr/bin/env python
 from setuptools import setup, find_packages
 
 setup_requires = []
-
-
 install_requires = []
 
 dependency_links = []
@@ -12,11 +11,13 @@ setup(
     description = 'ucloud command line interface',
     author = 'WonJinSeo',
     author_email = 'seowjin1060@naver.com',
-    packages = find_packages(),
+    packages = find_packages(exclude = ("credit.txt",)),
     include_package_data = True,
     install_requires=install_requires,
     setup_requires = setup_requires,
     dependency_links=dependency_links,
+    license="Apache License 2.0",
+   # scripts=['bin/command'],
     #scripts=['manage.py'],
     entry_points={
         'console_scripts': [],

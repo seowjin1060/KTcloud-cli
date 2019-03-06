@@ -53,7 +53,7 @@ class configure:
         return
 
 
-    
+        
     def command_process_configure(self):
         command = self.command
         if command == "init":
@@ -68,7 +68,7 @@ class configure:
         else:
             print("no command matched for "+"'ucloud configure"+command+"'"+ "\n" +"type 'ucloud configure help' to to view supported configure command'")
             exit(-1)
-
+    
     ##def command_process_server(command):
     ##    if ctype == "List"
     ##        
