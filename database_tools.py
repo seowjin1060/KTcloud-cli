@@ -30,7 +30,7 @@ class database:
         if(self.Zone == "KOR-Seoul M2"):
             self.url= "https://api.ucloudbiz.olleh.com/server/v2/client/api?"
 
-    def execute():
+    def execute(self):
         state = 0
         p_types = []
         p_dict = {}

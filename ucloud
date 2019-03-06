@@ -89,6 +89,7 @@ def ctype_process(ctype,command,parameters):
         s.execute()        
     elif ctype == "db":
         d = database_tools.database(command,parameters)
+        d.execute()
     elif ctype =="help":
         print("============[type] list============ ")
         for i in Ctype_List:
