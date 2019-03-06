@@ -34,7 +34,11 @@ class configure:
     #    for i in ZONE:
     #        if(zone_in.lower() == i):
     #            zone_in=i
-        response = input("[response type] or type help to check supported response :")
+        response = input("[response type] or type 'help' to check supported response :")
+        while(response == 'help' or response not in self.RESPONSE_TYPE):
+            for name in self.RESPONSE_TYPE:
+                print(name)
+            response = input("[response type] or type 'help' to check supported response :")
         if zone_in == "KOR-Seoul M2":
             m2_zone = True
         t = open("credit.txt","w")

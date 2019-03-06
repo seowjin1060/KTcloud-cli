@@ -5,6 +5,7 @@ import sys
 import urllib.parse
 import credit_configure
 import server_tools
+import database_tools
 import art
 UCLOUD_API_URLS={
     'server' : 'https://api.ucloudbiz.olleh.com/server/v1/client/api',
@@ -24,7 +25,7 @@ UCLOUD_API_URLS={
     #         print("no credit file detected \nplease type 'ucloud configure init' to create credit files")
     #         exit(-1)
 #Command_List = ["configure","ListAvailableProductTypes","delpoyVirtualMachine","startVirtualMachine","listVirtualMachines","listVirtualMachineForCharge"]
-Ctype_List = ["help","configure","server"]
+Ctype_List = ["help","configure","server","db"]
 ctype = ""
 command = ""
 def main():
@@ -86,6 +87,8 @@ def ctype_process(ctype,command,parameters):
     elif ctype == "server":
         s = server_tools.server(command,parameters)
         s.execute()        
+    elif ctype == "db":
+        d = database_tools.database(command,parameters)
     elif ctype =="help":
         print("============[type] list============ ")
         for i in Ctype_List:
