@@ -2,10 +2,9 @@ Metadata-Version: 1.0
 Name: ucloudcli
 Version: 0.1
 Summary: ucloud command line interface
-Home-page: https://github.com/seowjin1060/UcloudCli
+Home-page: UNKNOWN
 Author: WonJinSeo
 Author-email: seowjin1060@naver.com
-License: 
-Description-Content-Type: UNKNOWN
-Description: 
-Platform: Python, Unix 
+License: Apache License 2.0
+Description: UNKNOWN
+Platform: UNKNOWN
