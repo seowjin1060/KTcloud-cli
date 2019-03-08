@@ -8,7 +8,7 @@ class configure:
         self.RESPONSE_TYPE=['json','xml']
     def configure_list(self):
         try:
-            credit_file = open("$HOME/.ucloud/credit.txt","r")
+            credit_file = open("credit.txt","r")
         except:
             print("no credit file detected \nplease type 'ucloud configure init' to create credit files")
             exit(-1)
@@ -53,7 +53,7 @@ class configure:
         return
 
 
-
+        
     def command_process_configure(self):
         command = self.command
         if command == "init":

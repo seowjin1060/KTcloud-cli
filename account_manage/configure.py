@@ -25,7 +25,6 @@ class configure:
         t.write(str(m2_zone)+ "\n")
         t.close()
         return
-
     def configure_list():
         credit = open("credit.txt" , "r")
         print("API_KEY : ", credit.readilne())
