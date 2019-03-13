@@ -35,16 +35,10 @@ If you have the aws-cli installed and want to upgrade to the latest version you 
 
 
 # operation
-<div>
 ![구성 및 동작](https://user-images.githubusercontent.com/26168539/54249433-88d1e480-4583-11e9-9f4c-d6a96e6f17b3.png)
 ![구성](https://user-images.githubusercontent.com/26168539/54249442-8d969880-4583-11e9-86bd-98af03356e90.png)
 
           
-          
-     
-
-</div>
-
 
 ## UCLOUD CLI
 - Ucloud KT 명령어 인터페이스
