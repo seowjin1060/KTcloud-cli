@@ -34,9 +34,14 @@ If you have the aws-cli installed and want to upgrade to the latest version you 
 > <strong> $ pip install --upgrade ucloudcli </strong> 
 
 
-# operation
-![구성 및 동작](https://user-images.githubusercontent.com/26168539/54249433-88d1e480-4583-11e9-9f4c-d6a96e6f17b3.png)
+# Package and Operation
+
+- package <br /> 
 ![구성](https://user-images.githubusercontent.com/26168539/54249442-8d969880-4583-11e9-86bd-98af03356e90.png)
+
+- operation <br /> 
+![구성 및 동작](https://user-images.githubusercontent.com/26168539/54249433-88d1e480-4583-11e9-9f4c-d6a96e6f17b3.png)
+
 
           
 
