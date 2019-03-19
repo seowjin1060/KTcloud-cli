@@ -31,7 +31,7 @@ def make_digest(key,message) :
     return signature
 
 def url_encode(input_list):
-    urllib.urlencode(input_list)
+    urllib.parse.urlencode(input_list)
     
 def sign_request_url(api_key,secret,command,response,parameters):
     args = {}
@@ -64,7 +64,7 @@ def main():
     command_list = []
     
     input_url ="command=listVirtualMachines&name=VM_33111&state=Running&response=xml&apiKey=miVr6X" #"command=listVirtualMachines&apiKey="+api_key
-    sign = sign_request_url(s_key)
+    #sign = sign_request_url(s_key)
  #   sign = urllib.parse.quote(sign.encode('utf-8'))
         
     #print(sign)
