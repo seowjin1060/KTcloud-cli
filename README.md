@@ -34,8 +34,16 @@ If you have the aws-cli installed and want to upgrade to the latest version you 
 > <strong> $ pip install --upgrade ucloudcli </strong> 
 
 
+# Package and Operation
+
+- package <br /> 
+![구성](https://user-images.githubusercontent.com/26168539/54249442-8d969880-4583-11e9-86bd-98af03356e90.png)
+
+- operation <br /> 
+![구성 및 동작](https://user-images.githubusercontent.com/26168539/54249433-88d1e480-4583-11e9-9f4c-d6a96e6f17b3.png)
 
 
+          
 
 ## UCLOUD CLI
 - Ucloud KT 명령어 인터페이스
@@ -72,3 +80,7 @@ If you have the aws-cli installed and want to upgrade to the latest version you 
 
 
 개발 3단계  pip을 통한 설치 후, 2단계의 설정 자동화 (2/24)
+
+
+
+
