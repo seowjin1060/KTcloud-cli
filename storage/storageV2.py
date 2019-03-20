@@ -1,15 +1,12 @@
 import make_signature_2
 import requests
 import json
+import urllib.request
 
-class database:
+class stotageV2:
     def __init__(self,input_command,parameters):
         self.credit = []
-        self.command_list = {"":[] , "listInstances":["instanceids"],"updateInstancePerfClass":["instanceid","perfclass"],
-        "updateInstanceStorageSize":["instanceid","storagesize","usageplantype"],"updateInstanceBackup":["instanceid","backupretention","backupstarthour","backupstartmin","backupduration"],
-        "updateInstanceMaintenance":["instanceid","maintenanceweekday","maintenancestarthour","maintenancestartmin","maintenanceduration"],"updateInstanceParameterGroup":["instanceid","parametergroupid"],"updateInstancePassword":["instanceid","dbmasterpassword"],
-        "updateInstanceAccessControlGroup":["instanceid","accesscontrolgroupids"],"startInstance":["instanceid"],"restartInstance":["instanceid"],"deleteInstance":["instanceid"],"createParameterGroup":["sourceparametergroupid","parametergroupname","parameters.name","parameters.value"],
-        "listParameterGroupEntries":["parametergroupid"],"listParameterGroups":["parametergroupids"],"deleteParameterGroup":["parametergroupids"]}
+        self.command_list = {"auth":["host", "Content-Type", "domain", "auth","name","user","password","identity","methods","scope"]}
         try:
             file = open("credit.txt","r")
         except:
@@ -34,7 +31,7 @@ class database:
         p_types = []
         p_dict = {}
         if self.command == "help":
-            print("==========Supported Database commands==========")
+            print("==========Supported storage 2.0 commands==========")
             for i in self.command_list:
                 if(i == ""):
                     print("========== Instance ==========")
@@ -80,7 +77,6 @@ class database:
                 p_dict[i] = par                                          
                 cnt+=1
                 
-            sig = make_signature_2.sign_request_url(self.apikey,self.secret,self.command,self.response,p_dict)
             query = self.url+"command="+self.command
             for i in p_dict:
                 query = query + "&"+i+"="+p_dict[i]
