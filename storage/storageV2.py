@@ -22,7 +22,7 @@ class stotageV2:
         self.Zone = self.credit[2]
         self.response = self.credit[3]
         self.parameters = parameters
-        self.url = "https://api.ucloudbiz.olleh.com/server/v1/client/api?"
+        self.url = "https://ssproxy.ucloudbiz.olleh.com/auth/v1.0"
         if(self.Zone == "KOR-Seoul M2"):
             self.url= "https://api.ucloudbiz.olleh.com/server/v2/client/api?"
 
@@ -77,11 +77,19 @@ class stotageV2:
                 p_dict[i] = par                                          
                 cnt+=1
                 
-            query = self.url+"command="+self.command
+           # query = self.url+"command="+self.command
             for i in p_dict:
                 query = query + "&"+i+"="+p_dict[i]
-            query +="&response="+self.response+"&apiKey="+self.apikey+"&signature="+sig
- #           print("res_url:",query)
+            #HttpGet httpget = new HttpGet("https://ssproxy.ucloudbiz.olleh.com/auth/v1.0");
+		    #httpget.setHeader("X-Auth-Token" :"MTQzODE2MjE1MDE0MzgxNTYyOTU2NjYw")
+		   # HttpResponse response = null;
+		   # HttpEntity entity = null;
+		    #StatusLine res_sl = null;
+		    #Header[] res_header = null;
+		    #BufferedReader in = null;
+            requests.get("https://ssproxy.ucloudbiz.olleh.com/auth/v1.0", headers={"X-Auth-Token" :"MTQzODE2MjE1MDE0MzgxNTYyOTU2NjYw"})
+
+           #           print("res_url:",query)
             response = requests.get(query)
             res = response.json()
             if response.status_code != 200:
